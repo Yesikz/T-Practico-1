@@ -120,10 +120,14 @@
     });
 
     const handleDecrement = () => {
-      if (window.confirm("¿Realmente quieres descontar un voto?")) {
-        setCount(count > 0 ? count - 1 : count);
-      }
-    };
+  if (count > 0) {
+    if (window.confirm("¿Realmente quieres descontar un voto?")) {
+      setCount(count - 1);
+    }
+  } else {
+    alert("No puedes descontar más votos. El contador está en 0.");
+  }
+};
 
     useEffect(() => {
       localStorage.setItem(`candidato${candidatoNumero}`, count.toString());
